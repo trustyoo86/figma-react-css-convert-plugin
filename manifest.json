@@ -1,0 +1,7 @@
+{
+  "name": "Figma to JSX",
+  "id": "figma-to-jsx",
+  "api": "1.0.0",
+  "main": "dist/code.js",
+  "ui": "dist/ui.html"
+}
