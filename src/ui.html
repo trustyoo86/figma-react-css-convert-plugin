@@ -4,6 +4,27 @@
     <h2>JSX Generator</h2>
     <button id="generate">Generate JSX</button>
     <pre id="output"></pre>
-    <script type="module" src="./ui.js"></script>
+    <script>
+      console.log("✅ inline script loaded");
+      window.addEventListener('DOMContentLoaded', () => {
+        console.log("✅ DOM ready");
+        const button = document.getElementById('generate');
+        if (button) {
+          console.log("✅ button found");
+          button.addEventListener('click', () => {
+            console.log("✅ button clicked");
+            parent.postMessage({ pluginMessage: { type: 'generate-jsx' } }, '*');
+          });
+        }
+      });
+    
+      onmessage = (event) => {
+        const msg = event.data.pluginMessage;
+        if (msg.type === 'result') {
+          const output = document.getElementById('output');
+          if (output) output.textContent = msg.jsxCode;
+        }
+      };
+    </script>
   </body>
 </html>
