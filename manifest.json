@@ -1,6 +1,6 @@
 {
-  "name": "Figma to JSX",
-  "id": "figma-to-jsx",
+  "name": "Figma to JSX React Inline",
+  "id": "figma-to-jsx-react-inline",
   "api": "1.0.0",
   "main": "dist/code.js",
   "ui": "dist/ui.html",
