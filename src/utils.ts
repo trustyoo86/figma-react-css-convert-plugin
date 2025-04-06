@@ -1,10 +1,7 @@
-// @ts-ignore
 export function convertNodeToJSX(node: SceneNode): string {
   if (node.type === 'TEXT') {
-    // @ts-ignore
     const fills = node.fills as Paint[];
     const color = (fills && fills[0]?.type === 'SOLID') ? rgbToHex(fills[0].color) : '#000';
-    // @ts-ignore
     const font = node.fontName as FontName;
 
     const style = {
@@ -12,11 +9,10 @@ export function convertNodeToJSX(node: SceneNode): string {
       fontWeight: font.style,
       color,
     };
-    return `<span style={${JSON.stringify(style)}}>${node.characters}</span>`;
+    return `<span style={${JSON.stringify(style, null, 2)}}>${node.characters}</span>`;
   }
 
   if (node.type === 'RECTANGLE') {
-    // @ts-ignore
     const fills = node.fills as Paint[];
     const bgColor = (fills && fills[0]?.type === 'SOLID') ? rgbToHex(fills[0].color) : 'transparent';
 
@@ -25,13 +21,12 @@ export function convertNodeToJSX(node: SceneNode): string {
       height: node.height,
       backgroundColor: bgColor,
     };
-    return `<div style={${JSON.stringify(style)}} />`;
+    return `<div style={${JSON.stringify(style, null, 2)}} />`;
   }
 
   return `<!-- Unsupported node type: ${node.type} -->`;
 }
 
-// @ts-ignore
 function rgbToHex(color: RGB): string {
   const r = Math.round(color.r * 255);
   const g = Math.round(color.g * 255);
